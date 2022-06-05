@@ -1,0 +1,27 @@
+spring:
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/bcp
+    username: hun
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+logging:
+  level:
+    study: debug
+
+# HS512 ????? ??? ??? ??? 512bit, ? 64byte ??? secret key? ???? ??.
+# Secret ?? ?? ???? Base64 ? ???? ? ?? (?? ???? ???? ??? ??? ??)
+# $ echo 'spring-boot-security-jwt-tutorial-jiwoon-spring-boot-security-jwt-tutorial' | base64
+jwt:
+  secret: c3ByaW5nLWJvb3Qtc2VjdXJpdHktand0LXR1dG9yaWFsLWppd29vbi1zcHJpbmctYm9vdC1zZWN1cml0eS1qd3QtdHV0b3JpYWwK
+  ExpirationInMs: 604800000
+  
