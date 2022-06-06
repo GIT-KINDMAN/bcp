@@ -31,7 +31,7 @@ public class TokenProvider {
     private static final String AUTHORITIES_KEY = "auth";
     private static final String BEARER_TYPE = "bearer";
     private static final long ACCESS_TOKEN_EXPIRE_TIME = 1000 * 60 * 30;
-    private final Long REFRESH_TOKEN_EXPIRE_TIME = 14 * 24 * 60 * 60 * 1000L; // 14 day
+    private static final Long REFRESH_TOKEN_EXPIRE_TIME = 14 * 24 * 60 * 60 * 1000L; // 14 day
     private final Key key;
 
 
@@ -113,6 +113,23 @@ public class TokenProvider {
         }
         return false;
     }
+
+//    public String validateRefreshToken(String refreshToken){
+//        // refresh 객체에서 refreshToken 추출
+//        String refreshToken = refreshToken.getRefreshToken();
+//        try {
+//            // 검증
+//            Jws<Claims> claims = Jwts.parser().setSigningKey(refreshSecretKey).parseClaimsJws(refreshToken);
+//            //refresh 토큰의 만료시간이 지나지 않았을 경우, 새로운 access 토큰을 생성합니다.
+//            if (!claims.getBody().getExpiration().before(new Date())) {
+//                return recreationAccessToken(claims.getBody().get("sub").toString(), claims.getBody().get("roles"));
+//            }
+//        }catch (Exception e) {
+//            //refresh 토큰이 만료되었을 경우, 로그인이 필요합니다.
+//            return null;
+//        }
+//        return null;
+//    }
 
     private Claims parseClaims(String accessToken) {
         try {
